@@ -1,7 +1,32 @@
 {
-  "tabWidth": 2,
-  "useTabs": false,
+  "enable": true,
+  "useEditorConfig": true,
+  "withNodeModules": false,
+  "requirePragma": false,
+
+  "printWidth": 120,
+  "endOfLine": "lf",
+
+  "arrowParens": "always",
+  "singleQuote": false,
   "semi": true,
-  "singleQuote": true,
-  "trailingComma": "es5"
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+
+  "htmlWhitespaceSensitivity": "css",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "singleAttributePerLine": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+
+  "plugins": ["prettier-plugin-sort-imports"],
+
+  "sortingMethod": "alphabetical",
+  "importTypeOrder": ["NPMPackages", "localImports"],
+  "newlineBetweenTypes": true,
+  "stripNewlines": true
 }
