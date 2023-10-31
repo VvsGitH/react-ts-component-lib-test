@@ -1,53 +1,42 @@
 const resolve = require("@rollup/plugin-node-resolve");
-const commonjs = require("@rollup/plugin-commonjs");
 const typescript = require("@rollup/plugin-typescript");
 const terser = require("@rollup/plugin-terser");
 const json = require("@rollup/plugin-json");
-// const dts = require("rollup-plugin-dts");
-const peerDepsExternal = require("rollup-plugin-peer-deps-external");
+const external = require("rollup-plugin-peer-deps-external");
 const postcss = require("rollup-plugin-postcss");
+const sourcemaps = require('rollup-plugin-sourcemaps');
 
-const packageJson = require("./package.json");
+const pkg = require("./package.json");
 
 module.exports = [
   {
-    input: "src/index.ts",
+    input: pkg.source,
     output: [
       {
-        file: packageJson.main,
-        format: "cjs",
+        file: pkg.main,
+        format: 'cjs',
         sourcemap: true,
-        // plugins: [terser()],
-        exports: "auto",
+        exports: 'named',
       },
       {
-        file: packageJson.module,
-        format: "esm",
+        file: pkg.module,
+        format: 'esm',
         sourcemap: true,
-        // plugins: [terser()],
-        exports: "auto",
+        exports: 'named',
       },
-      // {
-      //   file: "dist/index.js",
-      //   format: "cjs",
-      //   sourcemap: true,
-      //   exports: "auto",
-      // },
     ],
     plugins: [
-      peerDepsExternal(),
+      external(),
       postcss(),
       json(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({ tsconfig: './tsconfig.json' }),
       resolve(),
-      commonjs(),
-      terser(),
+      sourcemaps(),
+      terser({
+        output: { comments: false },
+        compress: { drop_console: true }
+      }),
     ],
-    external: ["react", "react-dom"],
+    external: ['react', 'react-dom'],
   },
-  // {
-  //   input: "src/index.ts",
-  //   output: [{ file: "dist/types.d.ts", format: "es" }],
-  //   plugins: [dts()],
-  // },
 ];
