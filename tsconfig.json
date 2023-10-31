@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "sourceRoot": "./src",
+    "typeRoots" : ["node_modules/@types", "src/types"],
+    "skipLibCheck": true,
 
     "target": "ES2020",
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "jsx": "react",
-    "skipLibCheck": true,
 
     "module": "ES2020",
     "moduleResolution": "node",
@@ -22,6 +23,6 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["dist", "node_modules", "rollup.config.js", "src/**/*.test.tsx"]
 }

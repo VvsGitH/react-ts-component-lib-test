@@ -32,6 +32,7 @@
       "rules": {
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
+        "react/no-unknown-property": "off",
         "prefer-const": "warn",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-inferrable-types": "off",
