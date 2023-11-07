@@ -1,13 +1,12 @@
-const json = require("@rollup/plugin-json");
 const resolve = require("@rollup/plugin-node-resolve");
 const terser = require("@rollup/plugin-terser");
 const typescript = require("@rollup/plugin-typescript");
+const copy = require("rollup-plugin-copy");
 const external = require("rollup-plugin-peer-deps-external");
-const postcss = require("rollup-plugin-postcss");
-const sourcemaps = require('rollup-plugin-sourcemaps');
+const sourcemaps = require("rollup-plugin-sourcemaps");
+const scss = require("rollup-plugin-scss");
 
 const pkg = require("./package.json");
-const image = require('@rollup/plugin-image');
 
 module.exports = [
   {
@@ -28,9 +27,14 @@ module.exports = [
     ],
     plugins: [
       external(),
-      postcss(),
-      image(),
-      json(),
+      scss({
+        output: pkg.style,
+        outputStyle: 'compressed',
+        sourceMap: true,
+      }),
+      copy({
+        targets: [{ src: "src/assets", dest: "dist" }]
+      }),
       typescript({ tsconfig: "./tsconfig.json" }),
       resolve(),
       sourcemaps(),
