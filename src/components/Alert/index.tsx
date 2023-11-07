@@ -1,19 +1,20 @@
-import classNames from "classnames";
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes, ReactNode } from "react";
 import { forwardRef } from "react";
+
+import { classNames } from "../../utils";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   /** Varianti di colorazione a seconda dello scopo dell'Alert. */
   variant: "primary" | "info" | "danger" | "success" | "warning";
   /** Stringa da inserire come titolo all'Alert, opzionale. */
-  title?: string;
+  heading?: ReactNode;
   /** Flag che indica la presenza di un Button all'interno per chiudere l'alert. */
   dismissible?: boolean;
   /** Flag che indica se inserire o meno le animazioni. */
   fade?: boolean;
 }
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  { children, className, variant, title, fade, dismissible, ...props },
+  { children, className, heading, variant, fade, dismissible, ...props },
   ref
 ) {
   const classes = classNames(
@@ -36,7 +37,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
   return (
     <div ref={ref} {...props} role="alert" className={classes}>
-      {title && <h4 className="alert-heading">{title}</h4>}
+      {heading && <div className="alert-heading">{heading}</div>}
       {children}
     </div>
   );

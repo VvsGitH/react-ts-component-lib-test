@@ -1,5 +1,6 @@
-import classNames from "classnames";
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
+
+import { classNames } from "../../utils";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Varianti di colorazione a seconda dello scopo del Button. */
