@@ -15,13 +15,21 @@
     "dist"
   ],
   "exports": {
-    "./package.json": "./package.json",
     ".": {
       "require": "./dist/index.cjs.js",
       "import": "./dist/index.esm.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/css/index.min.css": {
+      "import": "./dist/css/index.min.css",
+      "require": "./dist/css/index.min.css"
+    },
+    "./package.json": "./package.json"
   },
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "scripts": {
     "prebuild": "tsc && rimraf dist",
     "build": "rollup -c rollup.config.js",
