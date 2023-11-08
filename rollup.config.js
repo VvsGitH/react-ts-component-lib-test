@@ -33,7 +33,10 @@ module.exports = [
         sourceMap: true
       }),
       copy({
-        targets: [{ src: "src/assets", dest: "dist" }]
+        targets: [
+          { src: "src/assets", dest: "dist" },
+          // { src: "node_modules/bootstrap-italia/dist/fonts", dest: "dist" }
+        ]
       }),
       typescript({ tsconfig: "./tsconfig.json" }),
       resolve(),
