@@ -24,5 +24,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["dist", "node_modules", "rollup.config.js", "src/**/*.test.tsx"]
+  "exclude": ["dist", "node_modules", "rollup.config.mjs", "src/**/*.test.tsx"]
 }

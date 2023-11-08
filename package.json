@@ -8,6 +8,7 @@
     "bootstrap@5",
     "bootstrap-italia@2"
   ],
+  "type": "module",
   "source": "src/index.ts",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -34,7 +35,7 @@
   ],
   "scripts": {
     "prebuild": "tsc && rimraf dist",
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.mjs",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,ts,tsx,css}\"",
     "lint": "eslint '**/*.{js,ts,tsx}'"
   },
@@ -48,6 +49,7 @@
     "node": ">=18"
   },
   "devDependencies": {
+    "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",

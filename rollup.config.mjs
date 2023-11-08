@@ -1,15 +1,16 @@
-const resolve = require("@rollup/plugin-node-resolve");
-const terser = require("@rollup/plugin-terser");
-const typescript = require("@rollup/plugin-typescript");
-const json = require("@rollup/plugin-json");
-const copy = require("rollup-plugin-copy");
-const external = require("rollup-plugin-peer-deps-external");
-const scss = require("rollup-plugin-scss");
-const sourcemaps = require("rollup-plugin-sourcemaps");
+import resolve from "@rollup/plugin-node-resolve";
+import terser from "@rollup/plugin-terser";
+import typescript from "@rollup/plugin-typescript";
+import json from "@rollup/plugin-json";
+import image from "@rollup/plugin-image";
+import copy from "rollup-plugin-copy";
+import external from "rollup-plugin-peer-deps-external";
+import scss from "rollup-plugin-scss";
+import sourcemaps from "rollup-plugin-sourcemaps";
 
-const pkg = require("./package.json");
+import pkg from "./package.json" assert { type: "json" };
 
-module.exports = [
+export default [
   {
     input: pkg.source,
     output: [
@@ -36,9 +37,10 @@ module.exports = [
       copy({
         targets: [{ src: "src/imgs", dest: "dist" }]
       }),
+      image(),
       json(),
-      typescript({ tsconfig: "./tsconfig.json" }),
       resolve(),
+      typescript({ tsconfig: "./tsconfig.json" }),
       sourcemaps(),
       terser({
         output: { comments: false },
