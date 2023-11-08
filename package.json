@@ -77,6 +77,6 @@
     "react-dom": ">=18.2.0"
   },
   "dependencies": {
-    "bootstrap-italia": "^2.7.5"
+    "bootstrap-italia": "2.3.5"
   }
 }
