@@ -1,15 +1,13 @@
 import { Modal } from "bootstrap-italia";
 import React, { useRef } from "react";
 
+import { Icon } from "../Icon";
+
 export function ModaleConForm() {
   const modalRef = useRef<Modal>();
 
   return (
     <>
-      {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        OPEN
-      </button> */}
-
       <button type="button" className="btn btn-primary" onClick={() => modalRef.current?.toggle()}>
         OPEN
       </button>
@@ -30,9 +28,7 @@ export function ModaleConForm() {
                 Intestazione modale
               </h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Chiudi modale">
-                <svg className="icon icon-sm">
-                  <use href="node_modules/bootstrap-italia/dist/svg/sprites.svg#it-close-big"></use>
-                </svg>
+                <Icon icon="it-close-big" />
               </button>
             </div>
             <div className="modal-body">
