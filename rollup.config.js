@@ -1,6 +1,7 @@
 const resolve = require("@rollup/plugin-node-resolve");
 const terser = require("@rollup/plugin-terser");
 const typescript = require("@rollup/plugin-typescript");
+const json = require("@rollup/plugin-json");
 const copy = require("rollup-plugin-copy");
 const external = require("rollup-plugin-peer-deps-external");
 const scss = require("rollup-plugin-scss");
@@ -33,11 +34,9 @@ module.exports = [
         sourceMap: true
       }),
       copy({
-        targets: [
-          { src: "src/assets", dest: "dist" },
-          // { src: "node_modules/bootstrap-italia/dist/fonts", dest: "dist" }
-        ]
+        targets: [{ src: "src/imgs", dest: "dist" }]
       }),
+      json(),
       typescript({ tsconfig: "./tsconfig.json" }),
       resolve(),
       sourcemaps(),
