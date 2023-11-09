@@ -1,31 +1,41 @@
-import bsiSprite from "bootstrap-italia/dist/svg/sprites.svg";
-import React from "react";
+import React, { type SVGProps } from "react";
 
-import dxcSprite from  "../../imgs/icon/sprite.svg";
-import { BoostrapIconList, DxcIconList, type TBoostrapIcon, type TDxcIcon } from "./IconList";
+import type { ColorVariants, SizeVariants } from "../../types";
+import { classNames } from "../../utils";
+import { type TBoostrapIcon, type TDxcIcon } from "./IconList";
+import { getIconPath } from "./utils";
 
-export interface IconProps {
-  icon: TBoostrapIcon | TDxcIcon;
+export interface IconProps extends SVGProps<SVGSVGElement> {
+  icon: TBoostrapIcon | TDxcIcon; // the id of the icon, either from bootstrap-italia or dxc; custom icons are not supported by this component
+  color?: ColorVariants; // the color of the icon
+  bg?: ColorVariants; // the color of the backgroud of the icon
+  size?: SizeVariants; // the size of icon
+  padded?: boolean; // if true, more padding is added inside the icon box, resulting in a smaller icon occupying the same space
+  className?: string; // additional classes to add to the icon container
 }
 
-export function Icon(props: IconProps) {
-  const iconPath = getIconPath(props.icon);
+/**
+ * UI component to display an svg icon
+ * @param IconProps
+ * @returns JSX
+ */
+export function Icon({ icon, color, bg, size, padded, className, ...svgProps }: IconProps) {
+  const iconPath = getIconPath(icon);
 
   return (
-    <svg className="icon icon-sm">
+    <svg
+      {...svgProps}
+      aria-hidden="true"
+      className={classNames(
+        className,
+        "icon",
+        color && `icon-${color}`,
+        bg && `bg-${bg}`,
+        size && `icon-${size}`,
+        padded && "icon-padded"
+      )}
+    >
       <use href={iconPath} xlinkHref={iconPath}></use>
     </svg>
   );
-}
-
-function getIconPath(iconName: string): string {
-  if ((BoostrapIconList as unknown as string[]).includes(iconName)) {
-    return `${bsiSprite}#${iconName}`;
-  }
-
-  if ((DxcIconList as unknown as string[]).includes(iconName)) {
-    return `${dxcSprite}#${iconName}`;
-  }
-
-  return "";
 }

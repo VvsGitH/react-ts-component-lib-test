@@ -4,7 +4,7 @@
  * @returns stringa formattata di classi
  */
 export function classNames(
-  ...classes: (null | undefined | string | Record<string, boolean | undefined>)[]
+  ...classes: (null | undefined | false | string | Record<string, boolean | undefined>)[]
 ): string | undefined {
   if (!classes?.length) return undefined;
   return classes
