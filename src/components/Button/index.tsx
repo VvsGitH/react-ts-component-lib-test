@@ -1,12 +1,16 @@
 import React, { type ButtonHTMLAttributes, forwardRef } from "react";
 
+import type { ColorVariants, SizeVariants } from "../../types";
 import { classNames } from "../../utils";
+
+type BtnColorVariants = Exclude<ColorVariants, "light" | "dark" | "white" | "black">;
+type BtnSizeVariants = Exclude<SizeVariants, "xl">;
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Varianti di colorazione a seconda dello scopo del Button. */
-  variant: "primary" | "secondary" | "danger" | "success" | "warning";
+  variant: BtnColorVariants;
   /** Da utilizzare per le varianti di dimensione del componente Button. */
-  dimension?: "lg" | "sm" | "xs";
+  size?: BtnSizeVariants;
   /** Utilizzarlo per disabilitare il colore di sfondo, ed applicarlo invece al bordo.  */
   outline?: boolean;
   /** Flag che indica se si vuole aggiungere un'icona. */
@@ -17,7 +21,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * Componente per renderizzare un Button stilizzato attraverso bootstrap-italia
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { className, variant, outline, disabled, dimension, icon, ...props },
+  { className, variant, outline, disabled, size, icon, ...props },
   ref
 ) {
   const classes = classNames(
@@ -33,18 +37,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       "btn-danger": variant === "danger" && !outline,
       "btn-outline-danger": variant === "danger" && outline,
       "btn-warning": variant === "warning" && !outline,
-      "btn-outline-warning": variant === "warning" && outline
+      "btn-outline-warning": variant === "warning" && outline,
     },
     {
-      disabled: disabled
-    },
-    {
-      "btn-lg": dimension === "lg",
-      "btn-sm": dimension === "sm",
-      "btn-xs": dimension === "xs"
-    },
-    {
-      "btn-icon": icon
+      [`btn-${size}`]: size != null,
+      "btn-icon": icon,
+      disabled: disabled,
     }
   );
 
