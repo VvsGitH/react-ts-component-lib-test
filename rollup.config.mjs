@@ -6,7 +6,6 @@ import cssImport from "postcss-import";
 import cssUrl from "postcss-url";
 import external from "rollup-plugin-peer-deps-external";
 import css from "rollup-plugin-postcss";
-import sourcemaps from "rollup-plugin-sourcemaps";
 
 import pkg from "./package.json" assert { type: "json" };
 
@@ -56,12 +55,12 @@ export default [
       json(),
       /* typescript transpilation */
       typescript({ tsconfig: "./tsconfig.json" }),
-      /* sourcemaps generation */
-      sourcemaps(),
-      /* js minification */
+      /* js minification and sourcemaps generation */
       terser({
-        output: { comments: false },
-        compress: { drop_console: true }
+        compress: { drop_console: true },
+        format: { comments: false },
+        toplevel: true,
+        sourceMap: true,
       })
     ]
   }
