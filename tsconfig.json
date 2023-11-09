@@ -1,25 +1,34 @@
 {
   "compilerOptions": {
-    "sourceRoot": "./src",
-    "typeRoots" : ["node_modules/@types", "src/types"],
-    "skipLibCheck": true,
+    // General config
+    "sourceRoot": "./src", // check only the source folder
+    "typeRoots": ["node_modules/@types", "src/types"], // supporting custom type declarations
+    "skipLibCheck": true, // avoid type-checking node_modules
+    "resolveJsonModule": true, // handle import of json files
 
+    // Configuring TS for an ES2020 react project
     "target": "ES2020",
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "jsx": "react",
 
-    "module": "ES2020",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
+    // ESNext+Bundler give the modern ESM experience
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true, // Allow for cjs module import (if necessary)
+    "verbatimModuleSyntax": true, // You must specify if you are importing types or modules -- safer transpilation
+    "moduleDetection": "force", // every file is an ESM module
 
-    "sourceMap": true,
+    // Library output with sourcemaps
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
+    "sourceMap": true,
 
+    // Very strict TS config, since this is a library
     "strict": true,
     "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },

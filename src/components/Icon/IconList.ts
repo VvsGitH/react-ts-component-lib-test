@@ -1,4 +1,4 @@
-import { ArrayElement } from "../../utils";
+import { type ArrayElement } from "../../utils";
 
 export const BoostrapIconList = [
   "it-arrow-down",

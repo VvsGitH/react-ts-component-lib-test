@@ -2,7 +2,7 @@ import bsiSprite from "bootstrap-italia/dist/svg/sprites.svg";
 import React from "react";
 
 import dxcSprite from  "../../imgs/icon/sprite.svg";
-import { BoostrapIconList, DxcIconList, TBoostrapIcon, TDxcIcon } from "./IconList";
+import { BoostrapIconList, DxcIconList, type TBoostrapIcon, type TDxcIcon } from "./IconList";
 
 export interface IconProps {
   icon: TBoostrapIcon | TDxcIcon;
