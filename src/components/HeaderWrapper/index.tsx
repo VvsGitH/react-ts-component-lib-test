@@ -14,7 +14,7 @@ export interface HeaderProps extends HTMLAttributes<HTMLHeadingElement> {
  * Renderizza un wrapper per i componenti facenti parte dell'header
  */
 export const HeaderWrapper = forwardRef<HTMLHeadingElement, HeaderProps>(function HeaderWrapper(
-  { shadow, sticky, children, ...props },
+  { shadow, sticky, children, className, ...props },
   ref
 ) {
   const classes = classNames(
@@ -24,7 +24,8 @@ export const HeaderWrapper = forwardRef<HTMLHeadingElement, HeaderProps>(functio
     },
     {
       "it-shadow": shadow
-    }
+    },
+    className
   );
 
   return (
