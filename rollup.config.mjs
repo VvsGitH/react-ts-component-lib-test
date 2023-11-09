@@ -1,18 +1,20 @@
-import resolve from "@rollup/plugin-node-resolve";
+import image from "@rollup/plugin-image";
+import json from "@rollup/plugin-json";
 import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
-import json from "@rollup/plugin-json";
-import image from "@rollup/plugin-image";
-import copy from "rollup-plugin-copy";
+import cssImport from "postcss-import";
+import cssUrl from "postcss-url";
 import external from "rollup-plugin-peer-deps-external";
-import scss from "rollup-plugin-scss";
+import css from "rollup-plugin-postcss";
 import sourcemaps from "rollup-plugin-sourcemaps";
 
 import pkg from "./package.json" assert { type: "json" };
 
 export default [
   {
+    /* input must be equal to entry point of the library */
     input: pkg.source,
+    /* generate a compatible output for both esm and commonjs environments */
     output: [
       {
         file: pkg.main,
@@ -28,25 +30,39 @@ export default [
       }
     ],
     plugins: [
+      /* generate automatically the list of peer dependencies */
       external(),
-      scss({
-        output: pkg.style,
-        outputStyle: "compressed",
-        sourceMap: true
+
+      /* handle css bundling and minification */
+      css({
+        extract: pkg.style.slice(pkg.style.indexOf("/") + 1),
+        minimize: true,
+        to: pkg.style,
+        plugins: [
+          /* resolve and inline css @import statements */
+          cssImport(),
+          /* resolve url("...") and copy corresponding assets in dist folder */
+          cssUrl({
+            url: "copy",
+            assetsPath: "../assets",
+            useHash: true
+          })
+        ]
       }),
-      copy({
-        targets: [{ src: "src/imgs", dest: "dist" }]
-      }),
+
+      /* handle images and svgs imports in ts */
       image(),
+      /* handle import of json file in ts */
       json(),
-      resolve(),
+      /* typescript transpilation */
       typescript({ tsconfig: "./tsconfig.json" }),
+      /* sourcemaps generation */
       sourcemaps(),
+      /* js minification */
       terser({
         output: { comments: false },
         compress: { drop_console: true }
       })
-    ],
-    external: ["react", "react-dom", "bootstrap-italia"]
+    ]
   }
 ];
