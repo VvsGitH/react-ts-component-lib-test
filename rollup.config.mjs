@@ -13,21 +13,8 @@ export default [
   {
     /* input must be equal to entry point of the library */
     input: pkg.source,
-    /* generate a compatible output for both esm and commonjs environments */
-    output: [
-      {
-        file: pkg.main,
-        format: "cjs",
-        sourcemap: true,
-        exports: "named"
-      },
-      {
-        file: pkg.module,
-        format: "esm",
-        sourcemap: true,
-        exports: "named"
-      }
-    ],
+
+    /* processing */
     plugins: [
       /* generate automatically the list of peer dependencies */
       external(),
@@ -60,8 +47,24 @@ export default [
         compress: { drop_console: true },
         format: { comments: false },
         toplevel: true,
-        sourceMap: true,
+        sourceMap: true
       })
+    ],
+
+    /* generate a compatible output for both esm and commonjs environments */
+    output: [
+      {
+        file: pkg.main,
+        format: "cjs",
+        sourcemap: true,
+        exports: "named"
+      },
+      {
+        file: pkg.module,
+        format: "esm",
+        sourcemap: true,
+        exports: "named"
+      },
     ]
   }
 ];
