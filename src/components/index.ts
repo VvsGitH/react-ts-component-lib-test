@@ -5,3 +5,4 @@ export * from "./HeaderWrapper";
 export * from "./HeaderContent";
 export * from "./HeaderNavBar";
 export * from "./Icon";
+export * from "./Dropdown";
