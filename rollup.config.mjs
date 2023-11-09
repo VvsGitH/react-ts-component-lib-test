@@ -37,9 +37,9 @@ export default [
       }),
 
       /* handle images and svgs imports in ts */
-      image(),
+      image({ dom: false }),
       /* handle import of json file in ts */
-      json(),
+      json({ namedExports: true }),
       /* typescript transpilation */
       typescript({ tsconfig: "./tsconfig.json" }),
       /* js minification and sourcemaps generation */

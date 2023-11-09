@@ -195,6 +195,7 @@ export const DxcIconList = [
   "trash",
   "alluvione",
   "download",
+  "list-preview"
 ] as const;
 
 export type TDxcIcon = ArrayElement<typeof DxcIconList>;
