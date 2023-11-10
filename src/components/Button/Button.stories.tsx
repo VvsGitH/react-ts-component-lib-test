@@ -1,12 +1,12 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
 import { Button } from ".";
-import { Icon } from "../Icon";
 import "../../css/index.css";
+import { Icon } from "../Icon";
 
 const meta: Meta<typeof Button> = {
-  title: "Example/Button",
+  title: "UI/Button",
   component: Button,
   parameters: {
     layout: "centered"

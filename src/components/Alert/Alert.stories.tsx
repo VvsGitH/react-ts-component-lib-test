@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
+import "../../css/index.css";
 import { Alert } from "./index";
 
 const meta: Meta<typeof Alert> = {
-  title: "Example/Alert",
+  title: "UI/Alert",
   component: Alert,
   parameters: {
     layout: "centered"
