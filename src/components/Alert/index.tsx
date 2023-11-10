@@ -1,12 +1,12 @@
 import React, { type HTMLAttributes, type ReactNode } from "react";
 import { forwardRef } from "react";
 
-import { classNames } from "../../utils";
 import type { ColorVariants } from "../../types";
+import { classNames } from "../../utils";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   /** Varianti di colorazione a seconda dello scopo dell'Alert. */
-  variant: Exclude<ColorVariants, "light" | "dark" | "white" | "black">;
+  variant: Exclude<ColorVariants, "light" | "dark" | "white" | "black" | "primary" | "secondary">;
   /** Stringa da inserire come titolo all'Alert, opzionale. */
   heading?: ReactNode;
   /** Flag che indica la presenza di un Button all'interno per chiudere l'alert. */
@@ -22,7 +22,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     className,
     "alert",
     {
-      "alert-primary": variant === "primary",
       "alert-info": variant === "info",
       "alert-success": variant === "success",
       "alert-danger": variant === "danger",
