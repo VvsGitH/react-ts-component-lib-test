@@ -6,3 +6,4 @@ export * from "./HeaderContent";
 export * from "./HeaderNavBar";
 export * from "./Icon";
 export * from "./Dropdown";
+export * from "./Tab";
