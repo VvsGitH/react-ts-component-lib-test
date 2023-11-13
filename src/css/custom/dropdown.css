@@ -4,16 +4,32 @@
   transform: translateY(-50%);
 }
 
+.dropdown-right:before {
+  top: 20px;
+  left: -6px;
+}
+
 .dropdown-left {
   right: 100%;
   top: 50%;
   transform: translateY(-50%);
 }
 
+.dropdown-left:before {
+  top: 20px;
+  right: -6px;
+  left: auto;
+}
+
 .dropdown-top {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.dropdown-top:before {
+  bottom: -6px;
+  top: auto;
 }
 
 .dropdown-bottom {

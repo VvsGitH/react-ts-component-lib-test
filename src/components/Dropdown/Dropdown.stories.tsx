@@ -72,41 +72,41 @@ export const DropdownWithHeadingAndDivider: Story = {
   )
 };
 
-// export const DropdownTop: Story = {
-//   render: () => (
-//     <Dropdown.Container>
-//       <Dropdown.Button>Dropdown</Dropdown.Button>
-//       <Dropdown.Items placement="top">
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Terzo</button>}</Dropdown.Item>
-//       </Dropdown.Items>
-//     </Dropdown.Container>
-//   )
-// };
+export const DropdownTop: Story = {
+  render: () => (
+    <Dropdown.Container>
+      <Dropdown.Button>Dropdown</Dropdown.Button>
+      <Dropdown.Items placement="top">
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Terzo</button>}</Dropdown.Item>
+      </Dropdown.Items>
+    </Dropdown.Container>
+  )
+};
 
-// export const DropdownRight: Story = {
-//   render: () => (
-//     <Dropdown.Container>
-//       <Dropdown.Button>Dropdown</Dropdown.Button>
-//       <Dropdown.Items placement="right">
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Terzo</button>}</Dropdown.Item>
-//       </Dropdown.Items>
-//     </Dropdown.Container>
-//   )
-// };
+export const DropdownRight: Story = {
+  render: () => (
+    <Dropdown.Container>
+      <Dropdown.Button>Dropdown</Dropdown.Button>
+      <Dropdown.Items placement="right">
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Terzo</button>}</Dropdown.Item>
+      </Dropdown.Items>
+    </Dropdown.Container>
+  )
+};
 
-// export const DropdownLeft: Story = {
-//   render: () => (
-//     <Dropdown.Container>
-//       <Dropdown.Button>Dropdown</Dropdown.Button>
-//       <Dropdown.Items placement="left">
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
-//         <Dropdown.Item>{({ classes }) => <button className={classes}>Terzo</button>}</Dropdown.Item>
-//       </Dropdown.Items>
-//     </Dropdown.Container>
-//   )
-// };
+export const DropdownLeft: Story = {
+  render: () => (
+    <Dropdown.Container>
+      <Dropdown.Button>Dropdown</Dropdown.Button>
+      <Dropdown.Items placement="left">
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
+        <Dropdown.Item>{({ classes }) => <button className={classes}>Terzo</button>}</Dropdown.Item>
+      </Dropdown.Items>
+    </Dropdown.Container>
+  )
+};
