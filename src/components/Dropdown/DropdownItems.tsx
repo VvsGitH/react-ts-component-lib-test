@@ -10,7 +10,7 @@ export interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement> {
 /**
  * Componente che renderizza il Menu del Dropdown
  */
-export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(function DropdownMenu(
+export const DropdownItems = forwardRef<HTMLDivElement, DropdownMenuProps>(function DropdownItems(
   { children, className, placement, ...props },
   ref
 ) {

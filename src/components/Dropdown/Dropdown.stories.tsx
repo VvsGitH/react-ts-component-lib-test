@@ -9,7 +9,14 @@ const meta: Meta<typeof Dropdown.Container> = {
   parameters: {
     layout: "centered"
   },
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div style={{ marginTop: 200, marginBottom: 200 }}>
+        <Story />
+      </div>
+    )
+  ]
 };
 
 export default meta;
