@@ -1,30 +1,32 @@
 import { Menu } from "@headlessui/react";
-import React, { forwardRef, type HTMLAttributes } from "react";
+import React, { type HTMLAttributes, type ReactNode } from "react";
 
 import { classNames } from "../../utils";
 
-export interface DropdownMenuProps extends HTMLAttributes<HTMLDivElement> {
+export interface DropdownMenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+  heading?: string;
+  children: ReactNode | ((rProps: { open: boolean }) => ReactNode);
   placement: "top" | "right" | "left" | "bottom";
+  fullWidth?: boolean;
 }
 
 /**
  * Componente che renderizza il Menu del Dropdown
  */
-export const DropdownItems = forwardRef<HTMLDivElement, DropdownMenuProps>(function DropdownItems(
-  { children, className, placement, ...props },
-  ref
-) {
-  const classes = classNames(className, "dropdown-menu show dropdown-menu-focus", {
-    "dropdown-top": placement === "top",
-    "dropdown-left": placement === "left",
-    "dropdown-right": placement === "right",
-    "dropdown-bottom": placement === "bottom"
+export function DropdownItems({ children, placement, fullWidth, heading, className, ...props }: DropdownMenuProps) {
+  const classes = classNames(className, "dropdown-menu show", {
+    [`dropdown-${placement}`]: placement != null,
+    "full-width": fullWidth
   });
+
   return (
-    <Menu.Items className={classes} {...props} ref={ref}>
-      <div className="link-list-wrapper link-list-wrapper-focus">
-        <ul className="link-list link-list-focus">{children}</ul>
-      </div>
+    <Menu.Items as="div" className={classes} {...props}>
+      {(rProps) => (
+        <div className="link-list-wrapper">
+          {heading && <div className="link-list-heading">{heading}</div>}
+          <ul className="link-list">{typeof children === "function" ? children(rProps) : children}</ul>
+        </div>
+      )}
     </Menu.Items>
   );
-});
+}
