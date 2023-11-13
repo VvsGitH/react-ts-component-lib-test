@@ -1,21 +1,23 @@
-import React, { forwardRef, type HTMLAttributes, type ReactElement } from "react";
+import { Tab } from "@headlessui/react";
+import React, { type HTMLAttributes } from "react";
 
 import { classNames } from "../../utils";
-import type { TabItemProps } from "./TabItem";
-import { Tab } from "@headlessui/react";
 
-type ItemNode = ({ className, ...props }: TabItemProps) => React.JSX.Element;
-export interface TabListProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactElement<ItemNode> | ReactElement<ItemNode>[];
+export interface TabListProps extends HTMLAttributes<HTMLUListElement> {
+  fullWidth?: boolean;
+  largeIcons?: boolean;
+  iconsAndText?: boolean;
 }
-export const TabList = forwardRef<HTMLDivElement, TabListProps>(function TabContainer(
-  { children, className, ...props },
-  ref
-) {
-  const classes = classNames(className, "nav nav-tabs auto");
+
+export function TabList({ children, className, fullWidth, largeIcons, iconsAndText, ...props }: TabListProps) {
+  const classes = classNames(className, "nav nav-tabs", {
+    auto: fullWidth,
+    "nav-tabs-icon-lg": largeIcons,
+    "nav-tabs-icon-text": iconsAndText
+  });
   return (
-    <Tab.List className={classes} ref={ref} {...props}>
+    <Tab.List as="ul" className={classes} {...props}>
       {children}
     </Tab.List>
   );
-});
+}

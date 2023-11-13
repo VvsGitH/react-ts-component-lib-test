@@ -1,4 +1,7 @@
-.tab-item-custom button:focus:not(.focus--mouse){
-    border: 0 !important;
-    box-shadow: 0 0 0 0 !important;
+/* Fix style on focus state */
+.nav-tabs button.nav-link:focus:not(.focus--mouse) {
+  border: none !important;
+  box-shadow: none !important;
+  outline: 2px solid var(--bs-shade7) !important;
+  outline-offset: -2px;
 }

@@ -1,13 +1,23 @@
-import React, { forwardRef, type HTMLAttributes } from "react";
+import { Tab, Transition } from "@headlessui/react";
+import React, { Fragment, type HTMLAttributes } from "react";
 
-import { Tab } from "@headlessui/react";
-
-export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {}
-
-export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(function TabPanel({ children, ...props }, ref) {
+export function TabPanel({ children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <Tab.Panel ref={ref} {...props}>
-      {children}
+    <Tab.Panel as={Fragment} unmount>
+      {({ selected }) => (
+        <Transition
+          as="div"
+          show={selected}
+          appear={true}
+          enter="fade"
+          enterTo="show"
+          entered="fade show"
+          style={{ transitionDuration: "0.3s", transitionDelay: "0.2s" }}
+          {...props}
+        >
+          {children}
+        </Transition>
+      )}
     </Tab.Panel>
   );
-});
+}

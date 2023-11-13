@@ -1,21 +1,30 @@
-import type { HTMLAttributes } from "react";
-import React, { Fragment } from "react";
+import { Tab } from "@headlessui/react";
+import React, { Fragment, type ReactNode } from "react";
 
 import { classNames } from "../../utils";
-import { Tab } from "@headlessui/react";
-export interface TabItemProps extends HTMLAttributes<HTMLButtonElement> {
-  disabled?: boolean;
-}
-export const TabItem = ({ disabled, children, className, ...props }: TabItemProps) => {
-  const classes = classNames(className, "nav-item nav-link tab-item-custom", { disabled: disabled });
 
+interface TabItemProps {
+  children: ReactNode;
+  disabled?: boolean;
+  className?: string;
+}
+
+export const TabItem = ({ disabled, children, className }: TabItemProps) => {
   return (
-    <Tab as={Fragment}>
-      {({ selected }) => (
-        <button className={classes + (selected ? " active" : "")} disabled={disabled} {...props}>
-          {children}
-        </button>
-      )}
-    </Tab>
+    <li className="nav-item">
+      <Tab as={Fragment}>
+        {({ selected }) => (
+          <button
+            className={classNames(className, "nav-link", {
+              disabled: disabled,
+              active: selected
+            })}
+            disabled={disabled}
+          >
+            {children}
+          </button>
+        )}
+      </Tab>
+    </li>
   );
 };
