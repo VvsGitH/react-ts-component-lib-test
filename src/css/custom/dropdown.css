@@ -4,8 +4,16 @@
   transform: translateY(-50%);
 }
 
+.icon-right {
+  transform: rotate(-90deg);
+}
+
+.dropdown-toggle[aria-expanded=true] .icon-right {
+  transform: rotate(90deg);
+}
+
 .dropdown-right:before {
-  top: 20px;
+  top: 70px;
   left: -6px;
 }
 
@@ -15,8 +23,16 @@
   transform: translateY(-50%);
 }
 
+.icon-left {
+  transform: rotate(90deg);
+}
+
+.dropdown-toggle[aria-expanded=true] .icon-left {
+  transform: rotate(-90deg);
+}
+
 .dropdown-left:before {
-  top: 20px;
+  top: 70px;
   right: -6px;
   left: auto;
 }
@@ -25,6 +41,15 @@
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
+  margin-bottom: 16px;
+}
+
+.icon-top {
+  transform: scaleY(-1);
+}
+
+.dropdown-toggle[aria-expanded=true] .icon-top{
+  transform: scaleY(1);
 }
 
 .dropdown-top:before {

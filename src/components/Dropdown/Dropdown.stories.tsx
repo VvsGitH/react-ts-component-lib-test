@@ -75,7 +75,7 @@ export const DropdownWithHeadingAndDivider: Story = {
 export const DropdownTop: Story = {
   render: () => (
     <Dropdown.Container>
-      <Dropdown.Button>Dropdown</Dropdown.Button>
+      <Dropdown.Button placement="top">Dropdown</Dropdown.Button>
       <Dropdown.Items placement="top">
         <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
         <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
@@ -88,7 +88,7 @@ export const DropdownTop: Story = {
 export const DropdownRight: Story = {
   render: () => (
     <Dropdown.Container>
-      <Dropdown.Button>Dropdown</Dropdown.Button>
+      <Dropdown.Button placement="right">Dropdown</Dropdown.Button>
       <Dropdown.Items placement="right">
         <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
         <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
@@ -101,7 +101,7 @@ export const DropdownRight: Story = {
 export const DropdownLeft: Story = {
   render: () => (
     <Dropdown.Container>
-      <Dropdown.Button>Dropdown</Dropdown.Button>
+      <Dropdown.Button placement="left">Dropdown</Dropdown.Button>
       <Dropdown.Items placement="left">
         <Dropdown.Item>{({ classes }) => <button className={classes}>Primo</button>}</Dropdown.Item>
         <Dropdown.Item>{({ classes }) => <button className={classes}>Secondo</button>}</Dropdown.Item>
